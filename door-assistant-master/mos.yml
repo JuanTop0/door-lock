@@ -1,0 +1,35 @@
+author: Estebanb Bosse
+description: Control your door with RFID tag and by WEB.
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+filesystem:
+  - fs
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/dns-sd
+  - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/mjs
+
+sources:
+  - src
+
+tags:
+  - c
+  - wifi
+
+config_schema:
+  - ["dns_sd.host_name", "door"]
+  - ["door", "o", {title: "Door settings"}]
+  - ["door.enable", "b", true, {title: "Enable door service"}]
+  - ["door.keep_open_ms", "i", 3000, {title: "Keep door open (ms)"}]
+
+manifest_version: 2017-05-18
